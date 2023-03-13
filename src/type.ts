@@ -2,12 +2,12 @@
 
 export interface TokenPayload {
     id: string,
-    apelido: string,
+    name: string,
 }
 
 export interface UserDB {
     id: string,
-    apelido: string,
+    name: string,
     email: string,
     password: string,
     create_at: string
@@ -15,7 +15,7 @@ export interface UserDB {
 
 export interface UserModel {
     id: string,
-    apelido: string,
+    name: string,
     email: string,
     password: string,
     createAt: string
@@ -25,6 +25,7 @@ export interface PostDB {
     id: string,
     user_id: string,
     content: string,
+    comments: string,
     likes: number,
     dislikes: number,
     create_at: string
@@ -34,11 +35,24 @@ export interface PostModel {
     id: string,
     userId: string,
     content: string,
+    comments: string,
     likes: number,
     dislikes: number,
     createAt: string
 }
 
+export interface PostsCreatorDB{
+    id: string,
+    content: string,
+    comment: string,
+    likes: number, 
+    dislikes: number,
+    createdAt: string,
+    user: {
+        id: string,
+        name: string
+    }
+}
 export interface CommentDB {
     id: string,
     user_id: string,
@@ -58,6 +72,20 @@ export interface CommnetModel {
     dislikes: number,
     createAt: string
 }
+
+export interface CommentsCreatorDB {
+    id: string,
+    post_id: string,
+    comment: string,
+    likes: number,
+    dislikes: number,
+    created_at: string,
+    user: {
+        user_id: string,
+        name: string
+    }
+}
+
 
 export interface PostLikesDislikesModel{
     userId: string,

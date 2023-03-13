@@ -1,7 +1,7 @@
 import { PostModel } from "../type"
 
 export interface SignupInput {
-    apelido: unknown,
+    name: unknown,
     email: unknown,
     password: unknown
 }
@@ -12,7 +12,7 @@ export interface SignupOutput {
 
 export interface LoginInput {
     email: unknown,
-    senha: unknown
+    password: unknown
 }
 
 export interface LoginOutput {

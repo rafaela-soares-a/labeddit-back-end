@@ -1,3 +1,4 @@
+import { User } from "../models/User"
 import { UserDB } from "../type"
 import { BaseDatabase } from "./BaseDatabase"
 
@@ -9,4 +10,14 @@ export class UserDatabase extends BaseDatabase {
         .connection(UserDatabase.TABLE_USERS)
         .insert(userDB)
     }
+
+    public findByEmail = async  (email: string): Promise <UserDB | undefined > => {
+        const result: UserDB[] = await BaseDatabase
+        .connection(UserDatabase.TABLE_USERS)
+        .select()
+        .where( {email})
+
+        return result [0]
+
+    } 
 }

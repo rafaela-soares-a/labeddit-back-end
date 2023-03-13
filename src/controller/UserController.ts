@@ -1,7 +1,7 @@
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseError } from "../errors/BaseError";
 import { Request, Response } from "express";
-import { SignupInput } from "../dtos/UserDTO";
+import { LoginInput, SignupInput } from "../dtos/UserDTO";
 
 
 export class UserController {
@@ -12,7 +12,7 @@ export class UserController {
     public signup = (req: Request, res: Response) => {
         try {
             const input: SignupInput = {
-                apelido: req.body.apelido,
+                name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
             }
@@ -27,5 +27,24 @@ export class UserController {
                 res.status(500).send("Erro inesperado")
             }
         }
+    }
+
+    public login = async (req: Request, res: Response) => {
+        try {
+
+            const input: LoginInput = {
+                email: req.body.email,
+                password: req.body.password
+            }
+
+            const output = await this.userBusiness.login(input)
+            
+            }catch (error) {
+                if(error instanceof BaseError){
+                    res.status(error.statusCode).send(error.message)
+                } else {
+                    res.status(500).send("Erro inesperado")
+                }
+            }
     }
 }
