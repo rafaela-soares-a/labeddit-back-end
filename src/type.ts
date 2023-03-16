@@ -25,7 +25,7 @@ export interface PostDB {
     id: string,
     user_id: string,
     content: string,
-    comments: string,
+    comment: string,
     likes: number,
     dislikes: number,
     create_at: string
@@ -35,7 +35,7 @@ export interface PostModel {
     id: string,
     userId: string,
     content: string,
-    comments: string,
+    comment: string,
     likes: number,
     dislikes: number,
     createAt: string
