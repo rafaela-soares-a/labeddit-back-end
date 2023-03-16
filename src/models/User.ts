@@ -4,7 +4,7 @@ export class User {
 
     constructor (
         private id: string,
-        private apelido: string,
+        private name: string,
         private email: string,
         private password: string,
         private createAt: string
@@ -18,12 +18,12 @@ export class User {
         this.id = value
     }
 
-    public getApelido(): string {
-        return this.apelido
+    public getName(): string {
+        return this.name
     }
 
-    public setApelido (value: string): void {
-        this.apelido = value
+    public setName (value: string): void {
+        this.name = value
     }
 
     public getEmail(): string {
@@ -53,7 +53,7 @@ export class User {
     public ToDBModel (): UserDB {
         return {
             id: this.id,
-            apelido: this.apelido,
+            name: this.name,
             email: this.email,
             password: this.password,
             create_at: this.createAt
@@ -63,7 +63,7 @@ export class User {
     public ToBusinessModel(): UserModel {
         return {
             id: this.id,
-            apelido: this.apelido,
+            name: this.name,
             email: this.email,
             password: this.password,
             createAt: this.createAt 

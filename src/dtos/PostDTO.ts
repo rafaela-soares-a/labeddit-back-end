@@ -12,15 +12,15 @@ export interface CreatePostInput {
     content: unknown
 }
 
-export interface LikeDislikesPost {
+export interface LikeOrDislikeInput {
     idToLikeOrDislike: string,
     token: string | undefined,
     like: number
 }
 
 
-export interface createCommentInput {
+export interface CreateCommentInput {
     post_id: string,
-    commnet: string,
+    comment: string,
     token: string
 }

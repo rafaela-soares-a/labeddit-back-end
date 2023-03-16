@@ -1,7 +1,7 @@
 import { PostsBusiness } from "../business/PostBusiness";
 import { BaseError } from "../errors/BaseError";
 import { Request, Response} from "express"
-import { createCommentInput, CreatePostInput, GetPostInput } from "../dtos/PostDTO";
+import { CreateCommentInput, CreatePostInput, GetPostInput, LikeOrDislikeInput } from "../dtos/PostDTO";
 
 export class PostController {
     constructor (
@@ -51,12 +51,12 @@ export class PostController {
     public createComment =async (req: Request, res: Response) => {
         try {
 
-            const input: createCommentInput = {
+            const input : CreateCommentInput = {
                 post_id: req.body.post_id,
-                commnet: req.body.comment,
-                token: req.body.token as string
+                comment: req.body.comment,
+                token: req.headers.authorization as string
             }
-
+ 
             const output = await this.postBusiness.createComment(input)
 
             res.status(201).send(output)
@@ -64,6 +64,28 @@ export class PostController {
         } catch (error) {
             console.log(error)
 
+            if (error instanceof BaseError) {
+                res.status(error.statusCode).send(error.message)
+            } else {
+                res.status(500).send("Erro inesperado")
+            }
+        }
+    }
+
+    public likeOrDislike = async (req: Request, res: Response) =>{
+        try {
+
+            const input: LikeOrDislikeInput = {
+                idToLikeOrDislike: req.params.id,
+                token: req.headers.authorization,
+                like: req.body.like
+            }
+
+            await this.postBusiness.likeOrDislike(input)
+
+            res.status(200).end()
+            
+        } catch (error) {
             if (error instanceof BaseError) {
                 res.status(error.statusCode).send(error.message)
             } else {
