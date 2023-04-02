@@ -1,20 +1,20 @@
 import { CommentDB, CommentsCreatorDB, PostDB, PostModel, CommnetModel } from "../type"
 
-export class Post  {
+export class Post {
 
-    constructor (
+    constructor(
         private id: string,
         private content: string,
         private comment: string,
-        private likes: number, 
+        private likes: number,
         private dislikes: number,
         private createdAt: string,
         private user: {
             id: string,
             name: string
-    }, 
-    private post_comment: CommentsCreatorDB
-    ){}
+        },
+        private post_comment: CommentsCreatorDB
+    ) { }
 
     public getId(): string {
         return this.id
@@ -47,7 +47,7 @@ export class Post  {
     public setLikes(value: number): void {
         this.likes = value
     }
-    
+
     public getDislikes(): number {
         return this.dislikes
     }
@@ -64,17 +64,17 @@ export class Post  {
         this.createdAt = value
     }
 
-    public getUser():{
+    public getUser(): {
         id: string,
         name: string,
-    }{
+    } {
         return this.user
     }
 
-    public setUser(value :{
+    public setUser(value: {
         id: string,
         name: string,
-    }){
+    }) {
         this.user = value
     }
 
@@ -90,7 +90,7 @@ export class Post  {
         }
     }
 
-    public toPostBusinessModel(): PostModel{
+    public toPostBusinessModel(): PostModel {
         return {
             id: this.id,
             userId: this.user.id,
@@ -100,32 +100,32 @@ export class Post  {
             dislikes: this.dislikes,
             createAt: this.createdAt
         }
-        }
-
-
-      public toModelCommentDB(): CommentDB {
-      return {
-        id: this.id,
-        user_id: this.user.id,
-        post_id: this.post_comment.post_id,
-        comment: this.comment,
-        likes: this.likes,
-        dislikes: this.dislikes,
-        create_at: this.createdAt
-      }
     }
-    
+
+
+    public toModelCommentDB(): CommentDB {
+        return {
+            id: this.id,
+            user_id: this.user.id,
+            post_id: this.post_comment.post_id,
+            comment: this.comment,
+            likes: this.likes,
+            dislikes: this.dislikes,
+            create_at: this.createdAt
+        }
+    }
+
     public toBusinessCommentModels(): CommnetModel {
         return {
             id: this.id,
             userId: this.user.id,
             postId: this.post_comment.post_id,
             comment: this.comment,
-            likes:this.likes,
+            likes: this.likes,
             dislikes: this.dislikes,
             createAt: this.createdAt
 
         }
     }
-        
-    }
+
+}

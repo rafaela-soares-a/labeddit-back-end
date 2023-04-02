@@ -107,7 +107,7 @@ export interface CommentLikesDislikesModel{
 
 export interface CommentLikesDislikesDB{
     user_id: string,
-    commnet_id: string,
+    comment_id: string,
     like: number
 }
 

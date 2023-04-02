@@ -6,7 +6,7 @@ export class PostDatabase extends BaseDatabase {
     public static TABLE_USERS = "users"
     public static TABLE_POSTS = "posts"
     public static TABLE_COMMENTS =  "comments"
-    public static TABLE_POSTS_LIKESDISLIKES = "pots_likes_dislikes"
+    public static TABLE_POSTS_LIKESDISLIKES = "posts_likes_dislikes"
     public static TABLE_COMMENTS_LIKESDISLIKES = "comments_likes_dislikes"
 
 
