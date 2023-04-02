@@ -1,1 +1,0 @@
-# labeddit-full-stack
