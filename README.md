@@ -16,7 +16,7 @@ A API foi desensolvida para que seja possível o gerecimento das infomaçãoes d
 ## 🔗 Links de acesso:
 
 - Deploy Render: em breve;
-- Labeddit-FrontEnd: 
+- Labeddit-FrontEnd: https://github.com/rafaela-soares-a/labeddit-frond-end.git
 
 ---
 
